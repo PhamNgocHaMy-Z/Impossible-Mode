@@ -506,7 +506,16 @@ local sound = Instance.new("Sound")
 end)
 
 entity:SetCallback("CrucifixionOverwrite", function()
-loadstring(game:HttpGet("https://dpaste.com/HQ7295L9G.txt"))()
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Not Fun ",
+    Desc = "You Smiled Back At Me ",
+    Reason = "Crucifix On Smiler",
+    Image = "rbxassetid://104664218976870"
+})
 end)
 
 ---====== Run entity ======---
