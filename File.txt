@@ -2,7 +2,7 @@ caa = 0
 tween = game:GetService("TweenService")
 local TestMultplayer = true
 if game:GetService("ReplicatedStorage"):FindFirstChild("Impossible") then
-    warn("Survive wh1t3")
+    warn("Script Has Loaded")
     return true
 end
 
