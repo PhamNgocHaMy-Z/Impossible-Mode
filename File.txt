@@ -33,29 +33,6 @@ C.Anchored = false
 
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 
--- Horror Ambience 
-coroutine.wrap(function()
-local sound = Instance.new("Sound")
-sound.Parent = game.Workspace
-sound.SoundId = "rbxassetid://7524653769"
-sound.Volume = 1
-sound.PlaybackSpeed = 0.8
-sound.Looped = true
-sound:Play()
-end)()
-
--- Fog
-coroutine.wrap(function()
-while true do wait(1)
-local b = game:GetService("Lighting")
-b.Ambient = Color3.new(0, 0, 0)
-b.Brightness = 0.1
-b.FogEnd = 70
-b.FogStart = 0
-b.FogColor = Color3.new(0, 0, 0)
-end
-end)()
-
 -- Crucifix Spawner
 coroutine.wrap(function()
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
