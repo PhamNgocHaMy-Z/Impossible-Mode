@@ -33,6 +33,7 @@ C.Anchored = false
 
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 
+local god = false
 -- Crucifix Spawner
 coroutine.wrap(function()
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
@@ -101,9 +102,11 @@ local LeftC1 = LeftArm.LeftShoulder.C1
 shadow.Equipped:Connect(function()
 setupCrucifix(shadow)
 game.Players.LocalPlayer:SetAttribute("Hidden", true)
+god = true
 end)
  
 shadow.Unequipped:Connect(function()
+god = false
     game.Players.LocalPlayer:SetAttribute("Hidden", false)
         RightArm.Name = "RightUpperArm"
         LeftArm.Name = "LeftUpperArm"
@@ -212,8 +215,9 @@ task.spawn(function()
 	    task.wait(0.5)
 	    local _ , camera = game.Workspace.CurrentCamera:WorldToViewportPoint(eyes.Position)
 	    if camera then
-            	game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1)
+           if not god == true then	game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1)
                 game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Eyes"
+end
     end
    end
 end)
@@ -260,9 +264,11 @@ wait(1)
 while true do
 wait(math.random(0.5, 1))
 if not chr:GetAttribute("Crouching") then
+if not god == true then
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("I must crouch",true)
 game.Players.LocalPlayer.Character.Humanoid.Health -= 3
 game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Silence"
+end
 end
 if ultimaroom ~= game.ReplicatedStorage.GameData.LatestRoom.Value then 
 s:Destroy()
@@ -321,9 +327,11 @@ task.spawn(function()
 	    task.wait(0.5)
 	    local _ , camera = game.Workspace.CurrentCamera:WorldToViewportPoint(hgs.Position)
 	    if not camera then
-            game.Players.LocalPlayer.Character.Humanoid:TakeDamage(3)
+            if not god == true then
+game.Players.LocalPlayer.Character.Humanoid:TakeDamage(3)
             game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Hunger"
 	    end
+end
    end
 end)
 
@@ -1181,11 +1189,13 @@ end
 
 local _, onScreen = workspace.CurrentCamera:WorldToScreenPoint(Dread.PrimaryPart.Position)
 local ray = game.Workspace:Raycast(Dread.PrimaryPart.Position,game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Dread.PrimaryPart.Position)
+if not god == true then
 if ray.Instance.Parent == game.Players.LocalPlayer.Character or ray.Instance.Parent.Parent == game.Players.LocalPlayer.Character then
 if onScreen then
 
 death()
 
+end
 end
 end
 end
