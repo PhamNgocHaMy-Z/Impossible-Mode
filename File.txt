@@ -1,0 +1,1452 @@
+caa = 0
+tween = game:GetService("TweenService")
+local TestMultplayer = true
+if game:GetService("ReplicatedStorage"):FindFirstChild("Impossible") then
+    warn("Survive wh1t3")
+    return true
+end
+
+local Test = Instance.new("Part")
+Test.Name = "Imposible"
+Test.Parent = game:GetService("ReplicatedStorage")
+Test = 1
+local prefix = "[Notification]"
+local msg = "Imposible Mode V2"
+local msg2 = "Script Made By Voorpr0 & Nowhywhats & Vuivuiviu"
+local msg3 = "Thank You For Use Script"
+game.TextChatService.TextChannels.RBXGeneral:DisplaySystemMessage(`<font color='#42f563'>{prefix..msg}</font>`)
+game.TextChatService.TextChannels.RBXGeneral:DisplaySystemMessage(`<font color='#42f563'>{prefix..msg2}</font>`)
+game.TextChatService.TextChannels.RBXGeneral:DisplaySystemMessage(`<font color='#42f563'>{prefix..msg3}</font>`)
+
+local C = game.Players.LocalPlayer.Character:WaitForChild("Collision")
+C.Anchored = true
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 255, 0)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Oof's impossible mode script successfully loaded. V2",true)
+wait(2)
+caption.TextColor3 = Color3.fromRGB(255, 0, 0)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Fixed Script by Voorpr0 And Nowhywhats",true)
+wait(4)
+caption.TextColor3 = Color3.fromRGB(0, 255, 0)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Good luck!",true)
+C.Anchored = false
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+-- Horror Ambience 
+coroutine.wrap(function()
+local sound = Instance.new("Sound")
+sound.Parent = game.Workspace
+sound.SoundId = "rbxassetid://7524653769"
+sound.Volume = 1
+sound.PlaybackSpeed = 0.8
+sound.Looped = true
+sound:Play()
+end)()
+
+-- Fog
+coroutine.wrap(function()
+while true do wait(1)
+local b = game:GetService("Lighting")
+b.Ambient = Color3.new(0, 0, 0)
+b.Brightness = 0.1
+b.FogEnd = 70
+b.FogStart = 0
+b.FogColor = Color3.new(0, 0, 0)
+end
+end)()
+
+-- Crucifix Spawner
+coroutine.wrap(function()
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+
+function spawncruxy(posy)
+local abc = game:GetObjects("rbxassetid://11631916882")[1]
+local cruxy = abc.Handle:Clone()
+abc:Destroy()
+cruxy.Parent = game.Workspace
+cruxy.Name = "Cruxy"
+cruxy.Position = posy
+cruxy.Anchored = true
+local xy = math.random(-90, 90)
+cruxy.CFrame = CFrame.lookAt(cruxy.Position, cruxy.Position - Vector3.new(xy, yy, zy))
+cruxy.Rotation = Vector3.new(0, xy, -90)
+local lighty = Instance.new("PointLight")
+lighty.Brightness = 10000
+lighty.Parent = cruxy
+lighty.Enabled = true
+lighty.Color = Color3.fromRGB(255,0,0)
+lighty.Range = 1
+local lightp = Instance.new("PointLight")
+lightp.Brightness = 3
+lightp.Parent = cruxy
+lightp.Enabled = true
+lightp.Color = Color3.fromRGB(0,255,255)
+lightp.Range = 10
+local highlight = Instance.new("Highlight")
+highlight.Name = "H"
+highlight.FillColor = Color3.fromRGB(0,255,255)
+highlight.DepthMode = "AlwaysOnTop"
+highlight.FillTransparency = 0.5
+highlight.OutlineColor = Color3.fromRGB(255,255,255)
+highlight.Parent = cruxy
+local prompty = Instance.new("ProximityPrompt")
+prompty.Name = "prompty"
+prompty.MaxActivationDistance = 6
+prompty.ObjectText = "Custom"
+prompty.RequiresLineOfSight = true
+prompty.Parent = cruxy
+prompty.Style = "Custom"
+prompty.Triggered:Connect(function()
+cruxy:Destroy()
+
+_G.Uses = 1
+_G.Range = 200
+_G.OnAnything = false
+_G.Fail = false
+loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
+
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption('You grab the crucifix.',true)
+wait(3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption('It has a text on the back: "Made in China"',true)
+wait(3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption('It only works with custom entities.',true)
+end)
+
+end
+
+local lastroom = game:GetService("ReplicatedStorage").GameData.LatestRoom.Value
+for _, v in next, game.Workspace.CurrentRooms[lastroom].Assets:GetDescendants() do
+    if v.Name == "Table" then
+        local randomy = math.random(1, 20)
+            if randomy == 8 then
+        local positio = v.Main.Position + Vector3.new(0, 1.9, 0)
+        spawncruxy(positio)
+            end
+    end
+end
+
+end)
+end)()
+
+------------ LightStand Model
+coroutine.wrap(function()
+local LightReplaceModel = game:GetObjects("rbxassetid://12543866876")[1]
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+
+for i,v in pairs(workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value].Assets.Light_Fixtures:GetDescendants()) do
+	if v.Name == "LightStand" then
+			local torch = LightReplaceModel:Clone()
+			torch.Parent = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value].Assets.Light_Fixtures
+			torch.LightFixture.Changed:Connect(function()
+				torch.LightFixture.Neon.atachm["Ok you cannot tell me this isnt good"].Enabled = torch.LightFixture.PointLight.Enabled
+					torch.LightFixture.Neon["Bright sh idfk"].ParticleEmitter.Enabled = torch.LightFixture.PointLight.Enabled
+					torch.LightFixture:WaitForChild('Dust').ParticleEmitter.Enabled = torch.LightFixture.PointLight.Enabled 
+			end)
+			torch:PivotTo(v:GetPivot())
+			v:Destroy()
+   end
+  end
+end)
+end)()
+
+-- Screech
+coroutine.wrap(function()
+game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 0, 0)
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.SoundId = "rbxassetid://4737106301"
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.PlaybackSpeed = 0.75
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.SoundId = "rbxassetid://150184992"
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.PlaybackSpeed= 1
+end)()
+
+-- Rush Blood
+coroutine.wrap(function()
+game:GetService("RunService").RenderStepped:Connect(function()
+
+            game.Players.LocalPlayer.PlayerGui.MainUI.Jumpscare.Jumpscare_Rush.ImageLabel.ImageColor3 = Color3.fromRGB(255, 0, 0)
+            game.Players.LocalPlayer.PlayerGui.MainUI.Jumpscare.Jumpscare_Rush.ImageLabel.Image = "rbxassetid://82960212989173"
+            game.Players.LocalPlayer.PlayerGui.MainUI.Jumpscare.Jumpscare_Rush.ImageLabelBig.ImageColor3 = Color3.fromRGB(255, 0, 0)
+            
+    if game.Workspace:FindFirstChild("RushMoving") then
+        game.Workspace.RushMoving.RushNew.Attachment.BlackTrail.Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.new(0.407843, 0, 0)),
+            ColorSequenceKeypoint.new(0, Color3.new(0.407843, 0, 0)),
+            ColorSequenceKeypoint.new(0.407843, Color3.new(0.407843, 0, 0)),
+            ColorSequenceKeypoint.new(0.407843, Color3.new(0.407843, 0, 0)),
+            ColorSequenceKeypoint.new(1, Color3.new(0.407843, 0, 0))
+        })
+
+        game.Workspace.RushMoving.RushNew.Attachment.ParticleEmitter.Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.new(1, 0, 0)),
+            ColorSequenceKeypoint.new(0, Color3.new(1, 0, 0)),
+            ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+        })
+        
+            local BlackTrail = game.RushMoving.RushNew.Attachment.BlackTrail
+			BlackTrail.Texture = "rbxassetid://16812282020"
+			BlackTrail.Color = Color3.fromRGB(24, 29, 49)
+
+			local BlackTrail2 = BlackTrail:Clone()
+			BlackTrail2.Name = "BlackTrail2"
+			BlackTrail2.Texture = "rbxassetid://16812299892"
+			BlackTrail.Color = Color3.fromRGB(17, 20, 35)
+			BlackTrail2.Parent = game.RushMoving.RushNew.Attachment
+			
+        game.Workspace.RushMoving.RushNew.PlaySound.PlaybackSpeed = 0.02
+        game.Workspace.RushMoving.RushNew.PlaySound.Volume = 1
+        game.Workspace.RushMoving.RushNew.Footsteps.PlaybackSpeed = 0.035
+        game.Workspace.RushMoving.RushNew.Footsteps.Volume = 2
+        game.Workspace.RushMoving.RushNew.Footsteps.MaxDistance = 1000
+        
+    end
+
+end)
+end)()
+
+-- Eyes
+coroutine.wrap(function()
+while true do
+wait(60)
+local Kill = true
+local eye = game:GetObjects("rbxassetid://10859379907")[1]
+eye.Parent = game.Workspace
+local eyes = eye:FindFirstChildWhichIsA("BasePart") or eye:FindFirstChildWhichIsA("Part")
+eyes.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Parts.Floor.CFrame + Vector3.new(0,6,0)
+
+local sound = Instance.new("Sound")
+sound.Parent = eyes
+sound.SoundId = "rbxassetid://1228230799"
+sound.Volume = 1
+sound.PlaybackSpeed = 1
+sound.MaxDistance = 500
+sound.Looped = true
+sound:Play()
+wait(3)
+task.spawn(function()
+	while Kill == true do
+	    task.wait(0.5)
+	    local _ , camera = game.Workspace.CurrentCamera:WorldToViewportPoint(eyes.Position)
+	    if camera then
+            	game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1)
+                game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Eyes"
+    end
+   end
+end)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+Kill = false
+eye:Destroy()
+     end
+end)()
+
+-- Blink
+coroutine.wrap(function()
+while true do
+wait(100)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+if not game.Workspace:FindFirstChild("SeekMovingNewClone") or game.Workspace:FindFirstChild("SeekMoving") or game.ReplicatedStorage.GameData.LatestRoom.Value == 50 or game.ReplicatedStorage.GameData.LatestRoom.Value == 100 or workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:FindFirstChild("ShopProps") then
+
+loadstring(game:HttpGet("https://github.com/PABMAXICHAC/doors-monsters-scripts/raw/main/blinkcrux"))()
+
+end
+end
+end)()
+
+-- Silence
+coroutine.wrap(function()
+while true do
+wait(150)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+if not game.Workspace:FindFirstChild("SeekMovingNewClone") or game.Workspace:FindFirstChild("SeekMoving") or game.ReplicatedStorage.GameData.LatestRoom.Value == 50 or game.ReplicatedStorage.GameData.LatestRoom.Value == 100 or workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:FindFirstChild("ShopProps") then
+
+local s = game:GetObjects("rbxassetid://139665246906336")[1]
+s.Parent = game.Workspace
+local ss = s:FindFirstChildWhichIsA("BasePart") or s:FindFirstChildWhichIsA("Part")
+ss.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Parts.Floor.CFrame + Vector3.new(0,15,0)
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ModuleEvents = require(ReplicatedStorage.ClientModules.Module_Events)
+local currentrooms = game.Workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]
+ModuleEvents.shatter(currentrooms)
+
+local ultimaroom = game.ReplicatedStorage.GameData.LatestRoom.Value
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+wait(1)
+while true do
+wait(math.random(0.5, 1))
+if not chr:GetAttribute("Crouching") then
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("I must crouch",true)
+game.Players.LocalPlayer.Character.Humanoid.Health -= 3
+game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Silence"
+end
+if ultimaroom ~= game.ReplicatedStorage.GameData.LatestRoom.Value then 
+s:Destroy()
+loadstring(game:HttpGet("https://dpaste.com/CZ9738X95.txt"))()
+break end
+end
+
+end
+end
+end)()
+
+-- Hunger
+coroutine.wrap(function()
+while true do
+wait(170)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+if not game.Workspace:FindFirstChild("SeekMovingNewClone") or game.Workspace:FindFirstChild("SeekMoving") or game.ReplicatedStorage.GameData.LatestRoom.Value == 50 or game.ReplicatedStorage.GameData.LatestRoom.Value == 100 or workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:FindFirstChild("ShopProps") then
+
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camera = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+camera.CFrame = camera.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(9, 8, 0.1, 2, 1, 6)
+
+local sound = Instance.new("Sound")
+sound.Parent = game.Workspace
+sound.Name = "s"
+sound.SoundId = "rbxassetid://2738830850"
+sound.Volume = 0.5
+sound.PlaybackSpeed = 0.75
+sound.Looped = false
+sound:Play()
+
+game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1]:SetAttribute("Ambient",Color3.fromRGB(100, 0, 0))
+local a = game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
+game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Hunger [Opened Door]"
+end)
+wait(30.5)
+a:Disconnect()
+game.Workspace.s:Destroy()
+local dmg = true
+local hg = game:GetObjects("rbxassetid://131345762745591")[1]
+hg.Parent = game.Workspace
+local hgs = hg:FindFirstChildWhichIsA("BasePart") or hg:FindFirstChildWhichIsA("Part")
+hgs.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Parts.Floor.CFrame + Vector3.new(0,6,0)
+
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+
+wait(2)
+task.spawn(function()
+	while dmg == true do
+	    task.wait(0.5)
+	    local _ , camera = game.Workspace.CurrentCamera:WorldToViewportPoint(hgs.Position)
+	    if not camera then
+            game.Players.LocalPlayer.Character.Humanoid:TakeDamage(3)
+            game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Hunger"
+	    end
+   end
+end)
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+dmg = false
+hg:Destroy()
+loadstring(game:HttpGet("https://dpaste.com/DCBB53AWE.txt"))()
+end
+end
+end)()
+
+-- Smiler
+coroutine.wrap(function()
+while true do
+wait(250)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+if not game.Workspace:FindFirstChild("SeekMovingNewClone") or game.Workspace:FindFirstChild("SeekMoving") or game.ReplicatedStorage.GameData.LatestRoom.Value == 50 or game.ReplicatedStorage.GameData.LatestRoom.Value == 100 or workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:FindFirstChild("ShopProps") then
+
+---====== Load spawner ======---
+
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "Smiler",
+		Asset = "rbxassetid://108450814500304",
+		HeightOffset = 1
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 10
+		},
+		Shatter = true,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {9, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 500,
+		Delay = 12,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush", -- "Blitz"
+		Min = 10,
+		Max = 10,
+		Delay = 0.5
+	},
+	Damage = {
+		Enabled = true,
+		Range = 150,
+		Amount = 0.01
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 160,
+		Resist = false,
+		Break = false
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
+end)
+
+entity:SetCallback("OnStartMoving", function()
+    print("Entity has started moving")
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+    if startOfRebound == true then
+        warn("Smiler Smile")
+	else
+    game.Lighting.Ambient = Color3.fromRGB(255,0,0)
+    game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(1.5), {Ambient = Color3.fromRGB(67, 51, 56)}):Play()
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+loadstring(game:HttpGet("https://dpaste.com/DMV3JS4WY.txt"))()
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+		local shadow=game:GetObjects("rbxassetid://11503625408")[1]
+			local gui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
+local sound = Instance.new("Sound")
+	sound.SoundId = "rbxassetid://"..10483837590
+	sound.Looped = false
+	sound.Parent = gui
+	sound.Volume = 1
+	sound:Play()
+			shadow.Parent = gui
+			shadow.Visible = true
+			local l__ImageLabel__1 = shadow.ImageLabel;
+			local v2 = Random.new();
+			local l__SizeValue__3 = shadow.SizeValue;
+			local v4 = math.random(1, 6);
+			if v4 == 1 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 2 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 3 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 4 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 5 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 6 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			shadow.Jumpscare:Play();
+			for v5 = 1, 25 do
+				local v6 = math.random(1, 3);
+				if v6 == 1 then
+					shadow.BackgroundColor3 = Color3.new(0, 0, 0);
+					l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
+				end;
+				if v6 == 2 then
+					shadow.BackgroundColor3 = Color3.new(1, 0, 0);
+					l__ImageLabel__1.ImageColor3 = Color3.new(0, 0, 0);
+				end;
+				if v6 == 3 then
+					shadow.BackgroundColor3 = Color3.new(0.666667, 0, 0);
+					l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0);
+				end;
+				l__ImageLabel__1.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.45, 0.55), 0);
+				l__ImageLabel__1.Size = l__ImageLabel__1.Size + UDim2.new(l__SizeValue__3.Value, 0, l__SizeValue__3.Value, 0);
+				l__ImageLabel__1.Rotation = math.random(-10, 10);
+				l__SizeValue__3.Value = l__SizeValue__3.Value - 0.01;
+				wait(0);
+			end;
+			l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
+			shadow.BackgroundColor3 = Color3.new(0, 0, 0);
+			shadow.Visible = false;
+			shadow.Jumpscare:Stop()
+	game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
+    game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Smiler"
+	end
+end)
+
+entity:SetCallback("CrucifixionOverwrite", function()
+loadstring(game:HttpGet("https://dpaste.com/HQ7295L9G.txt"))()
+end)
+
+---====== Run entity ======---
+
+entity:Run()
+
+end
+end
+end)()
+
+-- Wh1t3
+coroutine.wrap(function()
+while true do
+wait(280)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+wait(math.random(5, 10))
+if not game.Workspace:FindFirstChild("SeekMovingNewClone") or game.Workspace:FindFirstChild("SeekMoving") or game.ReplicatedStorage.GameData.LatestRoom.Value == 50 or game.ReplicatedStorage.GameData.LatestRoom.Value == 100 or workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:FindFirstChild("ShopProps") then
+
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Wh1t3 ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "Wh1t3",
+		Asset = "rbxassetid://85396591341941",
+		HeightOffset = 2
+	},
+	Lights = {
+		Flicker = {
+			Enabled = false,
+			Duration = 1
+		},
+		Shatter = true,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 500,
+		Delay = 8,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush", -- "Blitz"
+		Min = 2,
+		Max = 2,
+		Delay = 0.01
+	},
+	Damage = {
+		Enabled = true,
+		Range = 100,
+		Amount = 0.01
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 120,
+		Resist = true,
+		Break = false
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 1
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(50),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+    local sound = Instance.new("Sound")
+	sound.SoundId = "rbxassetid://"..131489490
+	sound.Looped = false
+	sound.Parent = workspace.Wh1t3
+	sound.Volume = 5
+	sound.PlaybackSpeed = 0.85
+	sound:Play()
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
+	camara.CFrame = camara.CFrame * cf
+end)
+camShake:Start()
+camShake:Shake(CameraShaker.Presets.Earthquake)
+
+if not game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy") then
+	local Glitchy = Instance.new("ScreenGui")
+	local GlitchScreen = Instance.new("Frame")
+	local Glitch1 = Instance.new("ImageLabel")
+	local Glitch2 = Instance.new("ImageLabel")
+	local Glitch3 = Instance.new("ImageLabel")
+	
+	--Properties:
+	
+	Glitchy.Name = "Glitchy"
+	Glitchy.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Glitchy.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	
+	GlitchScreen.Name = "Glitch Screen"
+	GlitchScreen.Parent = Glitchy
+	GlitchScreen.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	GlitchScreen.BackgroundTransparency = 1.000
+	GlitchScreen.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	GlitchScreen.BorderSizePixel = 0
+	GlitchScreen.Size = UDim2.new(1, 1, 1, 1)
+	
+	Glitch1.Name = "Glitch1"
+	Glitch1.Parent = GlitchScreen
+	Glitch1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Glitch1.BackgroundTransparency = 1.000
+	Glitch1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Glitch1.BorderSizePixel = 0
+	Glitch1.Visible = false
+	Glitch1.Size = UDim2.new(1, 1, 1, 1)
+	Glitch1.Image = "rbxassetid://15959966417"
+	Glitch1.ImageTransparency = 0.800
+	
+	Glitch2.Name = "Glitch2"
+	Glitch2.Parent = GlitchScreen
+	Glitch2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Glitch2.BackgroundTransparency = 1.000
+	Glitch2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Glitch2.BorderSizePixel = 0
+	Glitch2.Visible = false
+	Glitch2.Size = UDim2.new(1, 1, 1, 1)
+	Glitch2.Image = "rbxassetid://15959979240"
+	Glitch2.ImageTransparency = 0.800
+	
+	Glitch3.Name = "Glitch3"
+	Glitch3.Parent = GlitchScreen
+	Glitch3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Glitch3.BackgroundTransparency = 1.000
+	Glitch3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Glitch3.BorderSizePixel = 0
+	Glitch3.Visible = false
+	Glitch3.Size = UDim2.new(1, 1, 1, 1)
+	Glitch3.Image = "rbxassetid://12590547162"
+	Glitch3.ImageTransparency = 0.800
+end
+end)
+
+entity:SetCallback("OnStartMoving", function()
+local redtweeninfo = TweenInfo.new(3)
+local redinfo = {Color = Color3.fromRGB(100, 0, 0)}
+
+----------
+
+for i,v in pairs(workspace.CurrentRooms:GetDescendants()) do
+			if v:IsA("Light") then
+					game.TweenService:Create(v,redtweeninfo,redinfo):Play()
+					if v.Parent.Name == "LightFixture" then
+						    game.TweenService:Create(v.Parent,redtweeninfo,redinfo):Play()
+					end
+		  end
+end
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+ camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(6,5,0,2,1,6)
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+	if lineOfSight == true then
+		local FPS = 5
+    local clock = tick()
+        while clock + 1 / FPS > tick() do end
+    wait()
+    clock = tick()
+		if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+        game.Players.LocalPlayer.Character.Humanoid.Health -= 2.5
+        if game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy") then
+    local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
+    local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
+    local Gglitch2 = Gglitchy["Glitch Screen"].Glitch2
+    local Gglitch3 = Gglitchy["Glitch Screen"].Glitch3
+            if Gglitch1.Visible == false and Gglitch2.Visible == false and Gglitch3.Visible == false then
+    	    	Gglitch1.Visible = true
+                Gglitch1.ImageTransparency = 0.8
+                game:GetService("TweenService"):Create(Gglitch1, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
+        	end
+        	if Gglitch1.Visible == true and Gglitch2.Visible == false then
+        		Gglitch2.Visible = true
+                Gglitch2.ImageTransparency = 0.8
+                game:GetService("TweenService"):Create(Gglitch2, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
+        		Gglitch1.Visible = false
+        	elseif Gglitch2.Visible == true and Gglitch3.Visible == false then
+        		Gglitch3.Visible = true
+                Gglitch3.ImageTransparency = 0.8
+                game:GetService("TweenService"):Create(Gglitch3, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
+        		Gglitch2.Visible = false
+        	elseif Gglitch3.Visible == true and Gglitch1.Visible == false then
+        		Gglitch1.Visible = true
+                Gglitch1.ImageTransparency = 0.8
+                game:GetService("TweenService"):Create(Gglitch1, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
+        		Gglitch3.Visible = false
+        	end
+    end
+    end
+	else
+		warn(" Wh1t3 UwU ")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+    print("Entity is despawning")
+    local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
+    local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
+    local Gglitch2 = Gglitchy["Glitch Screen"].Glitch2
+    local Gglitch3 = Gglitchy["Glitch Screen"].Glitch3
+    Gglitch1.Visible = false
+    Gglitch2.Visible = false
+    Gglitch3.Visible = false
+caa = 0
+tween = game:GetService("TweenService")
+local TestMultplayer = true
+if game:GetService("ReplicatedStorage"):FindFirstChild("White") then
+    warn("Survive wh1t3")
+    return true
+end
+
+local Test = Instance.new("Part")
+Test.Name = "White"
+Test.Parent = game:GetService("ReplicatedStorage")
+Test = 1
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Fought A Beast And Survived.",
+    Desc = "How?",
+    Reason = "Survive WH1T3.",
+    Image = "rbxassetid://114256281426461"
+})
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+	game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(30)
+	game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
+	task.spawn(function()
+	if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 then
+        loadstring(game:HttpGet("https://pastefy.app/famDWh93/raw"))()
+        task.wait(3)
+		game.Players.LocalPlayer:Kick(' You Die To "Wh1t3" ')
+		wait(3)
+        game:Shutdown()
+     end
+            local Debuffs = Instance.new("ScreenGui")
+			local WH1T3 = Instance.new("Frame")
+			local UICorner = Instance.new("UICorner")
+			local ImageLabel = Instance.new("ImageLabel")
+			local Speed_Debuff = Instance.new("TextLabel")
+			Debuffs.Name = "Debuffs"
+			Debuffs.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+			Debuffs.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+			WH1T3.Name = "WH1T3"
+			WH1T3.Parent = Debuffs
+			WH1T3.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
+			WH1T3.BackgroundTransparency = 0.500
+			WH1T3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			WH1T3.BorderSizePixel = 0
+			WH1T3.Position = UDim2.new(0.830811501, -1, 0.936082482, -1)
+			WH1T3.Size = UDim2.new(0.169188485, 1, 0.0639175251, 1)
+			UICorner.Parent = WH1T3
+			ImageLabel.Parent = WH1T3
+			ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			ImageLabel.BackgroundTransparency = 1.000
+			ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			ImageLabel.BorderSizePixel = 0
+			ImageLabel.Position = UDim2.new(4.92218874e-07, 0, 0, 0)
+			ImageLabel.Size = UDim2.new(0.266129375, 1, 1, 1)
+			ImageLabel.Image = "rbxassetid://12096064117"
+			Speed_Debuff.Name = "Speed_Debuff"
+			Speed_Debuff.Parent = WH1T3
+			Speed_Debuff.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Speed_Debuff.BackgroundTransparency = 1.000
+			Speed_Debuff.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			Speed_Debuff.BorderSizePixel = 0
+			Speed_Debuff.Size = UDim2.new(1, 1, 1, 1)
+			Speed_Debuff.Font = Enum.Font.Unknown
+			Speed_Debuff.Text = "     -50% Speed"
+			Speed_Debuff.TextColor3 = Color3.fromRGB(100, 0, 0)
+			Speed_Debuff.TextSize = 14.000
+			Speed_Debuff.TextStrokeTransparency = 0.000
+			game:GetService("RunService").RenderStepped:Connect(function()
+            if workspace:FindFirstChild("SeekMoving") then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 26
+            elseif not workspace:FindFirstChild("SeekMoving") then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = math.random(10, 12.5)
+            end
+            end)
+       end)
+	end
+end)
+
+entity:SetCallback("CrucifixionOverwrite", function()
+    print("Custom crucifixion callback")
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Youa're Stupid",
+    Desc = "Crash! Crash! Crash!",
+    Reason = "Crucifix On Wh1t3",
+    Image = "rbxassetid://137673471255239"
+})
+end)
+
+---====== Run entity ======---
+
+entity:Run()
+
+end
+end 
+end)()
+
+-- Common Sense
+coroutine.wrap(function()
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
+if game.ReplicatedStorage.GameData.LatestRoom.Value == 50 then
+
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+local entity = spawner.Create({
+	Entity = {
+		Name = "CommonSense",
+		Asset = "https://github.com/PABMAXICHAC/doors-monsters-models/raw/main/Common_Sense2.rbxm",
+		HeightOffset = 3
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 5
+		},
+		Shatter = true,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = false,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 45,
+		Delay = 5,
+		Reversed = true
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush", -- "Blitz"
+		Min = 100,
+		Max = 100,
+		Delay = 0.001
+	},
+	Damage = {
+		Enabled = true,
+		Range = 20,
+		Amount = 0.01
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+game.Workspace.CommonSense:Destroy()
+end)
+
+entity:SetCallback("OnDespawning", function()
+    print("Entity is despawning")
+    caa = 0
+tween = game:GetService("TweenService")
+local TestMultplayer = true
+if game:GetService("ReplicatedStorage"):FindFirstChild("cmss") then
+    warn("Survive hunger")
+    return true
+end
+
+local Test = Instance.new("Part")
+Test.Name = "cmss"
+Test.Parent = game:GetService("ReplicatedStorage")
+Test = 1
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Survival from Common Sence",
+    Desc = "So smoke.",
+    Reason = "Encounter Common Sence",
+    Image = "rbxassetid://139528160080039"
+})
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+		game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
+        game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Common Sense"
+	end
+end)
+
+---====== Run entity ======---
+
+entity:Run()
+
+end
+end
+end)
+end)()
+
+-- Monster2
+coroutine.wrap(function()
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
+
+for _, v in next, game.Workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:GetDescendants() do
+if v.Name == "Painting_Small" then
+local paintingchance = math.random(1, 3)
+if paintingchance == 2 then
+
+              local a = v:Clone()
+              a.Parent = v.Parent
+              a.Canvas.SurfaceGui.ImageLabel.Image = "rbxassetid://12650020400"
+              a.Canvas.SurfaceGui.ImageLabel.BackgroundTransparency = 1
+              a.Canvas.SurfaceGui.ImageLabel.ImageTransparency = 0.5
+              a.Name = "Painting Easter Egg"
+              local b = a.InteractPrompt
+              
+b.Triggered:Connect(function()
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 0, 0)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption('I See You!',true)
+v:Destroy()
+end)
+
+end
+end
+end
+end
+end)
+end)()
+
+-- Ultimate Rooms
+coroutine.wrap(function()
+while true do wait(math.random(50, 500))
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+local ultimaroom = game.ReplicatedStorage.GameData.LatestRoom.Value
+
+while true do
+wait(4.5)
+game.Players.LocalPlayer.Character.Humanoid.Health -= 3
+if ultimaroom ~= game.ReplicatedStorage.GameData.LatestRoom.Value then break end
+end
+end
+end)()
+
+-- Fake Smiler
+coroutine.wrap(function()
+while true do wait(math.random(250, 500))
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ModuleEvents = require(ReplicatedStorage.ClientModules.Module_Events)
+local currentrooms = game.Workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]
+ModuleEvents.flicker(currentrooms, 10)
+end
+end)()
+
+-- A150
+coroutine.wrap(function()
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Rooms" then
+if game.ReplicatedStorage.GameData.LatestRoom.Value == 50 then
+
+---====== Load spawner ======---
+
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "A150",
+		Asset = "rbxassetid://87151484560543",
+		HeightOffset = 0
+	},
+	Lights = {
+		Flicker = {
+			Enabled = false,
+			Duration = 1
+		},
+		Shatter = false,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = false,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 40,
+		Delay = 3,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush", -- "Blitz"
+		Min = 10000,
+		Max = 10000,
+		Delay = 0.001
+	},
+	Damage = {
+		Enabled = true,
+		Range = 20,
+		Amount = 0.01
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
+    require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Something Is Comming ",true)
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+		game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
+        game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "A-150"
+	end
+end)
+
+---====== Run entity ======---
+
+entity:Run()
+
+end
+end
+end)
+end)()
+
+-- Dread
+coroutine.wrap(function()
+while true do wait(400)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local HumanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local CurrentRooms = game.Workspace.CurrentRooms
+local currentLoadedRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+local SpawnVariable = CurrentRooms:FindFirstChild(currentLoadedRoom)
+
+local Dread = game:GetObjects("rbxassetid://138728329341984")[1]
+Dread.Parent = game.Workspace
+Dread.PrimaryPart = Dread:FindFirstChildWhichIsA("BasePart")
+Dread.PrimaryPart.Anchored = true
+Dread.PrimaryPart.CanCollide = false
+Dread.PrimaryPart.Position = SpawnVariable.Parts.Floor.Position + Vector3.new(0,6,0)
+
+wait(5)
+local debounce = false
+
+local function death()
+debounce = true
+game:GetService("RunService").RenderStepped:Connect(function()
+local Camera = workspace.CurrentCamera
+local cameraPosition = Camera.CFrame.Position
+local Dreade = Dread.PrimaryPart
+local modelPosition = Dreade:GetPivot().Position
+Camera.CFrame = CFrame.new(cameraPosition, modelPosition)
+end)
+
+wait(3)
+
+local function GetGitSound(GithubSnd, SoundName)
+                local url = GithubSnd
+                if not isfile(SoundName .. ".mp3") then
+                    writefile(SoundName .. ".mp3", game:HttpGet(url))
+                end
+                local sound = Instance.new("Sound")
+                sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+                return sound
+end
+           local Debri = game:GetService("Debris")
+           local spawn = GetGitSound("https://github.com/Tinkgy111/Bang/blob/main/lv_0_20250111000930.mp3?raw=true", "spawner")
+spawn.Parent = game.Workspace
+spawn.Volume = 3
+spawn:Play()
+for i,v in pairs(Dread:GetDescendants()) do
+     if v:IsA("ParticleEmitter") then
+        v.TimeScale = 0
+     end
+end
+
+Debri:AddItem(Dread, 4)
+game.Lighting.MainColorCorrection.Contrast = 100
+game.Lighting.MainColorCorrection.Saturation = 100
+wait(4)
+game:GetService("RunService").RenderStepped:Connect(function()
+HumanoidRootPart.Position = SpawnVariable.Parts.Floor.Position
+end)
+            local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+            local camera = game.Workspace.CurrentCamera
+            local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+                camera.CFrame = camera.CFrame * shakeCf
+            end)
+            camShake:Start()
+            camShake:ShakeOnce(90, 90, 90, 90.5, 90, 95)
+wait(11)
+game.Players.LocalPlayer.Character.Humanoid.Health -= 1000
+SpawnVariable.Parts.Floor:Destroy()
+end
+
+
+task.spawn(function()
+while task.wait() do
+if debounce == true then
+     break
+end
+
+local _, onScreen = workspace.CurrentCamera:WorldToScreenPoint(Dread.PrimaryPart.Position)
+local ray = game.Workspace:Raycast(Dread.PrimaryPart.Position,game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Dread.PrimaryPart.Position)
+if ray.Instance.Parent == game.Players.LocalPlayer.Character or ray.Instance.Parent.Parent == game.Players.LocalPlayer.Character then
+if onScreen then
+
+death()
+
+end
+end
+end
+end)
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+Dread:Destroy()
+
+caa = 0
+tween = game:GetService("TweenService")
+local TestMultplayer = true
+if game:GetService("ReplicatedStorage"):FindFirstChild("dread") then
+    warn("Survive hunger")
+    return true
+end
+
+local Test = Instance.new("Part")
+Test.Name = "dread"
+Test.Parent = game:GetService("ReplicatedStorage")
+Test = 1
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Real Nightmare",
+    Desc = "No Straight Look Allowed !",
+    Reason = "Encounter Dread",
+    Image = "rbxassetid://76345697479443"
+})
+end
+end)()
+
+-- Smiley
+coroutine.wrap(function()
+while true do wait(350)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Rooms" then
+
+---====== Load spawner ======---
+
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "Smiley",
+		Asset = "rbxassetid://121604947718176",
+		HeightOffset = 2
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 5
+		},
+		Shatter = false,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 50,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 90,
+		Delay = 6,
+		Reversed = true
+	},
+	Rebounding = {
+		Enabled = false,
+		Type = "Ambush", -- "Blitz"
+		Min = 1,
+		Max = 1,
+		Delay = 2
+	},
+	Damage = {
+		Enabled = true,
+		Range = 50,
+		Amount = 0.01
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
+    wait(15)
+    game.Workspace.Smiley:Destroy()
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+		local shadow=game:GetObjects("rbxassetid://11503625408")[1]
+			local gui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
+			shadow.Parent = gui
+			shadow.Visible = true
+			local l__ImageLabel__1 = shadow.ImageLabel;
+			local v2 = Random.new();
+			local l__SizeValue__3 = shadow.SizeValue;
+			local v4 = math.random(1, 6);
+			if v4 == 1 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 2 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 3 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 4 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 5 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			if v4 == 6 then
+				l__ImageLabel__1.Image = "rbxassetid://82464575677230";
+			end;
+			shadow.Jumpscare:Play();
+			for v5 = 1, 25 do
+				local v6 = math.random(1, 3);
+				if v6 == 1 then
+					shadow.BackgroundColor3 = Color3.new(0, 0, 0);
+					l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
+				end;
+				if v6 == 2 then
+					shadow.BackgroundColor3 = Color3.new(1, 0, 0);
+					l__ImageLabel__1.ImageColor3 = Color3.new(0, 0, 0);
+				end;
+				if v6 == 3 then
+					shadow.BackgroundColor3 = Color3.new(0.666667, 0, 0);
+					l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0);
+				end;
+				l__ImageLabel__1.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.45, 0.55), 0);
+				l__ImageLabel__1.Size = l__ImageLabel__1.Size + UDim2.new(l__SizeValue__3.Value, 0, l__SizeValue__3.Value, 0);
+				l__ImageLabel__1.Rotation = math.random(-10, 10);
+				l__SizeValue__3.Value = l__SizeValue__3.Value - 0.01;
+				wait(0);
+			end;
+			l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
+			shadow.BackgroundColor3 = Color3.new(0, 0, 0);
+			shadow.Visible = false;
+			shadow.Jumpscare:Stop()
+	game.Players.LocalPlayer.Character.Humanoid:TakeDamage(25)
+    game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Smiler"
+	end
+end)
+
+---====== Run entity ======---
+
+entity:Run()
+
+end
+end
+end)()
+
+-- Checker
+coroutine.wrap(function()
+while true do wait(280)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Rooms" then
+
+---====== Load spawner ======---
+
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "Checker",
+		Asset = "rbxassetid://101729974222458",
+		HeightOffset = 0
+	},
+	Lights = {
+		Flicker = {
+			Enabled = false,
+			Duration = 1
+		},
+		Shatter = false,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = false,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 100,
+		Delay = 5,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = false,
+		Type = "Ambush", -- "Blitz"
+		Min = 1,
+		Max = 1,
+		Delay = 2
+	},
+	Damage = {
+		Enabled = true,
+		Range = 80,
+		Amount = 0.01
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = false
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+		    loadstring(game:HttpGet("https://pastefy.app/l5k0KXGk/raw"))()
+			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
+            game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Checker"
+	end
+end)
+
+---====== Run entity ======---
+
+entity:Run()
+
+end
+end
+end)()
