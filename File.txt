@@ -281,7 +281,7 @@ game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPla
 end
 if ultimaroom ~= game.ReplicatedStorage.GameData.LatestRoom.Value then 
 s:Destroy()
-loadstring(game:HttpGet("https://dpaste.com/CZ9738X95.txt"))()
+loadstring(game:HttpGet("https://pastefy.app/V2Q2b535/raw"))()
 break end
 end
 
@@ -345,7 +345,7 @@ end)
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 dmg = false
 hg:Destroy()
-loadstring(game:HttpGet("https://dpaste.com/DCBB53AWE.txt"))()
+loadstring(game:HttpGet("https://pastefy.app/Rz30pGSs/raw"))()
 end
 end
 end)()
@@ -435,7 +435,7 @@ entity:SetCallback("OnRebounding", function(startOfRebound)
 end)
 
 entity:SetCallback("OnDespawning", function()
-loadstring(game:HttpGet("https://dpaste.com/DMV3JS4WY.txt"))()
+loadstring(game:HttpGet("https://pastefy.app/XFOuznyr/raw"))()
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
