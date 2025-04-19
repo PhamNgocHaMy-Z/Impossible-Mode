@@ -106,27 +106,6 @@ end
 end)
 end)()
 
------------- LightStand Model
-coroutine.wrap(function()
-local LightReplaceModel = game:GetObjects("rbxassetid://12543866876")[1]
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
-
-for i,v in pairs(workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value].Assets.Light_Fixtures:GetDescendants()) do
-	if v.Name == "LightStand" then
-			local torch = LightReplaceModel:Clone()
-			torch.Parent = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value].Assets.Light_Fixtures
-			torch.LightFixture.Changed:Connect(function()
-				torch.LightFixture.Neon.atachm["Ok you cannot tell me this isnt good"].Enabled = torch.LightFixture.PointLight.Enabled
-					torch.LightFixture.Neon["Bright sh idfk"].ParticleEmitter.Enabled = torch.LightFixture.PointLight.Enabled
-					torch.LightFixture:WaitForChild('Dust').ParticleEmitter.Enabled = torch.LightFixture.PointLight.Enabled 
-			end)
-			torch:PivotTo(v:GetPivot())
-			v:Destroy()
-   end
-  end
-end)
-end)()
-
 -- Screech
 coroutine.wrap(function()
 game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 0, 0)
