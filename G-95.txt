@@ -70,8 +70,8 @@ game.Workspace.Thunder:Play()
 local TweenService = game:GetService("TweenService")
 
 task.spawn(function()
-while flickers == true do wait(1)
-TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(1),{TintColor = Color3.fromRGB(math.random(100, 255), 0, math.random(100, 255))}):Play()
+while flickers == true do wait(4)
+TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(3),{TintColor = Color3.fromRGB(math.random(100, 255), 0, math.random(100, 255))}):Play()
 end
 end)
 
@@ -83,7 +83,7 @@ end)
 camShake:Start()
 camShake:ShakeOnce(50,35,0,2,1,6)
 
-while flickers == true do wait(0)
+while flickers == true do wait(3)
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ModuleEvents = require(ReplicatedStorage.ClientModules.Module_Events)
 local currentrooms = game.Workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]
