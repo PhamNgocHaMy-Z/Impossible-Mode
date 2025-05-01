@@ -70,8 +70,8 @@ game.Workspace.Thunder:Play()
 local TweenService = game:GetService("TweenService")
 
 task.spawn(function()
-while flickers == true do wait(4)
-TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(3),{TintColor = Color3.fromRGB(math.random(100, 255), 0, math.random(100, 255))}):Play()
+while flickers == true do wait(2.5)
+TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(1),{TintColor = Color3.fromRGB(math.random(100, 255), 0, math.random(100, 255))}):Play()
 end
 end)
 
