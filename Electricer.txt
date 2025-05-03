@@ -1,0 +1,47 @@
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+local cam = workspace.CurrentCamera
+local offsetgyat = math.random(5, 15)
+local TweenService = game:GetService("TweenService")
+
+local Electricer = game:GetObjects("rbxassetid://96445372147310")[1]
+Electricer.Parent = workspace
+local primary_part = Electricer:FindFirstChildWhichIsA("BasePart") or Electricer:FindFirstChildWhichIsA("Part")
+Electricer.PrimaryPart = primary_part
+Electricer:SetPrimaryPartCFrame(chr.HumanoidRootPart.CFrame * CFrame.new(0, 0, -offsetgyat))
+Electricer.PrimaryPart.CanCollide = false
+
+TweenService:Create(Electricer.PrimaryPart.Desp,TweenInfo.new(2,Enum.EasingStyle.Linear),{PlaybackSpeed = 1.1}):Play()
+TweenService:Create(Electricer.PrimaryPart.PlaySound,TweenInfo.new(2,Enum.EasingStyle.Linear),{PlaybackSpeed = 2}):Play()
+local function Dmg()
+    local hum = chr:FindFirstChild("Humanoid")
+    local dmg = math.random(5, 25)
+        hum:TakeDamage(dmg)
+           local ReSt = game:GetService("ReplicatedStorage") 
+           ReSt.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Electricer"
+end
+
+local function LookAt()
+    local direction = (Electricer.PrimaryPart.Position - cam.CFrame.Position).unit
+    local dot_product = direction:Dot(cam.CFrame.LookVector)
+    return dot_product > 0.95
+end
+
+local function Moving(target, dur)
+    local tween_info = TweenInfo.new(dur, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local tween = TweenService:Create(Electricer.PrimaryPart, tween_info, {CFrame = target})
+    tween:Play()
+    tween.Completed:Wait()
+end
+
+wait(3)
+
+if LookAt() then
+Dmg()
+Moving(chr.HumanoidRootPart.CFrame, 0.3)
+end
+
+TweenService:Create(Electricer.PrimaryPart.Desp,TweenInfo.new(2,Enum.EasingStyle.Linear),{PlaybackSpeed = 0.1}):Play()
+TweenService:Create(Electricer.PrimaryPart.Desp,TweenInfo.new(2,Enum.EasingStyle.Linear),{Volume = 0}):Play()
+TweenService:Create(Electricer.PrimaryPart.PlaySound,TweenInfo.new(2,Enum.EasingStyle.Linear),{Volume = 0}):Play()
+Electricer:Destroy()
