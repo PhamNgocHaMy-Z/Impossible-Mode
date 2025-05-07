@@ -64,7 +64,7 @@ tweenservice:Create(sound,TweenInfo.new(5,Enum.EasingStyle.Linear),{PlaybackSpee
 
 task.spawn(function()
 
-while true do wait(math.random(5, 10))
+while true do wait(15)
 
 tweenservice:Create(light,TweenInfo.new(3,Enum.EasingStyle.Linear),{Range = 30}):Play()
 
