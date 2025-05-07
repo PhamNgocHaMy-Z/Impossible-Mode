@@ -25,7 +25,7 @@ tweenservice:Create(light,TweenInfo.new(5,Enum.EasingStyle.Linear),{Brightness =
 
 local sound = model.Sound
 sound.PlaybackSpeed = 5
-sound.MaxDistance = 999
+sound.MaxDistance = 5000
 tweenservice:Create(sound,TweenInfo.new(5,Enum.EasingStyle.Linear),{PlaybackSpeed = 0.1}):Play()
 wait(5)
 tweenservice:Create(sound,TweenInfo.new(5,Enum.EasingStyle.Linear),{PlaybackSpeed = 0.05}):Play()
