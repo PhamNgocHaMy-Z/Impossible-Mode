@@ -60,7 +60,7 @@ local entity = spawner.Create({
 	},
 	Damage = {
 		Enabled = true,
-		Range = 50,
+		Range = 40,
 		Amount = 0.001
 	},
 	Crucifixion = {
@@ -94,20 +94,42 @@ local function Moving(target, dur)
     tween.Completed:Wait()
 end
 
-Moving(cen.RoomExit.CFrame, 2)
-wait(0)
-Moving(ben.RoomExit.CFrame, 2)
-wait(0)
-Moving(en.RoomExit.CFrame, 2)
-wait(0)
-Moving(go.RoomExit.CFrame, 2)
-wait(0)
-Moving(no.RoomExit.CFrame, 3)
-wait(0)
-Moving(main.RoomExit.CFrame, 4)
-wait(0)
-local fallframe = entity.CFrame * CFrame.new(0, -100, 0)
-Moving(fallframe, 2)
+local a = main.Parts.Floor.CFrame * CFrame.new(0,6,0)
+local b = no.Parts.Floor.CFrame * CFrame.new(0,6,0)
+local c = go.Parts.Floor.CFrame * CFrame.new(0,6,0)
+local d = en.Parts.Floor.CFrame * CFrame.new(0,6,0)
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+local a = main.Parts.Floor.CFrame * CFrame.new(0,6,0)
+local b = no.Parts.Floor.CFrame * CFrame.new(0,6,0)
+local c = go.Parts.Floor.CFrame * CFrame.new(0,6,0)
+local d = en.Parts.Floor.CFrame * CFrame.new(0,6,0)
+
+end)
+
+Moving(cen.RoomExit.CFrame, 1.5)
+wait(1.5)
+Moving(ben.RoomExit.CFrame, 1.5)
+wait(1.5)
+Moving(d, 1)
+wait(1)
+Moving(en.RoomExit.CFrame, 1.5)
+wait(1.5)
+
+Moving(c, 1)
+wait(1)
+Moving(go.RoomExit.CFrame, 1)
+wait(1.5)
+
+Moving(b, 1)
+wait(1)
+Moving(no.RoomExit.CFrame, 2)
+wait(2)
+
+Moving(a, 2)
+wait(2)
+Moving(main.RoomExit.CFrame, 2)
+
 wait(0)
 game.Workspace.Flare:Destroy()     
 
@@ -116,7 +138,7 @@ for _, part in pairs(game.Workspace.CurrentRooms[game:GetService("ReplicatedStor
          local fire = Instance.new("Fire")
                   fire.Heat = 10
                   fire.SecondaryColor = Color3.new(1, 1, 1) -- White
-                  fire.Size = math.max(50, 50) -- Pick the larger of the two dimensions
+                  fire.Size = math.max(15, 15) -- Pick the larger of the two dimensions
                   fire.Parent = part
      end
 end
@@ -128,19 +150,18 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 		print("Entity has killed the player")
 	else
 
-local TweenService = game:GetService("TweenService")
-local function Moving(target, dur)
-    local tween_info = TweenInfo.new(dur, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-    local tween = TweenService:Create(game.Workspace.Flare.FlareNew, tween_info, {CFrame = target})
-    tween:Play()
-    tween.Completed:Wait()
-end
-
-Moving(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame, 0.5)
-
 local shadow=game:GetObjects("rbxassetid://11503625408")[1]
 local gui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
 shadow.Parent = gui
+
+local sound = Instance.new("Sound",gui)
+sound.SoundId = "rbxassetid://85271883712040"
+local octave = Instance.new("PitchShiftSoundEffect",sound)
+octave.Octave = 0.5
+local level = Instance.new("DistortionSoundEffect",sound)
+level.Level = 0.97
+sound:Play()
+
 shadow.Visible = true
 local l__ImageLabel__1 = shadow.ImageLabel;
 local v2 = Random.new();
