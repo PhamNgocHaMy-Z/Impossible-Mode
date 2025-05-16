@@ -40,7 +40,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-while true do wait(15)
+while true do wait(math.random(15, 30))
 
 if dmg == true then
 local shadow = game:GetObjects("rbxassetid://11503625408")[1]
