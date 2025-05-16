@@ -127,7 +127,7 @@ task.spawn(function()
 	
      if not chr:GetAttribute("Hiding") then
      
-      game.Players.LocalPlayer.Character.Humanoid:TakeDamage(3)
+      game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1.5)
       
       end
       
