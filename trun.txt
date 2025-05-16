@@ -302,22 +302,22 @@ wait(0)
 
 Moving(en.Parts.Floor.CFrame, 1)
 
-wait(0.5)
+wait(1)
 
 Moving(en.RoomExit.CFrame, 1)
 
-wait(0)
+wait(1)
 
 Moving(go.Parts.Floor.CFrame, 1)
 
-wait(0.5)
+wait(1)
 
 Moving(go.RoomExit.CFrame, 1)
 
-wait(0)
+wait(1)
 Moving(no.Parts.Floor.CFrame, 1)
 
-wait(0.5)
+wait(1)
 
 Moving(no.RoomExit.CFrame, 1.5)
 
