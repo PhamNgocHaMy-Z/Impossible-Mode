@@ -2,19 +2,42 @@
 
 
 
+
+
+
+
 local flickers = true
+
+
 
 local sound = Instance.new("Sound")
 
+
+
 sound.Name = "Thunder"
+
+
 
 sound.SoundId = "rbxassetid://8068501155" 
 
+
+
 sound.Parent = workspace
 
-sound.Volume = 10
+local octave = Instance.new("PitchShiftSoundEffect",sound)
+octave.Octave = 0.5
+local level = Instance.new("DistortionSoundEffect",sound)
+level.Level = 0.75
+
+sound.Volume = 3
+
+
 
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+
+
+
 
 
 
@@ -22,107 +45,215 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 
 
 
+
+
+
+
 local entity = spawner.Create({
+
+
 
 	Entity = {
 
+
+
 		Name = "G95",
+
+
 
 		Asset = "rbxassetid://101440528666446",
 
+
+
 		HeightOffset = 0
 
+
+
 	},
+
+
 
 	Lights = {
 
+
+
 		Flicker = {
+
+
 
 			Enabled = false,
 
+
+
 			Duration = 1
+
+
 
 		},
 
+
+
 		Shatter = false,
+
+
 
 		Repair = false
 
+
+
 	},
+
+
 
 	Earthquake = {
 
+
+
 		Enabled = false
 
+
+
 	},
+
+
 
 	CameraShake = {
 
+
+
 		Enabled = true,
+
+
 
 		Range = 150,
 
+
+
 		Values = {5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 
+
+
 	},
+
+
 
 	Movement = {
 
-		Speed = 380,
+
+
+		Speed = 250,
+
 		
+
 		Delay = 6,
+
+
 
 		Reversed = false
 
+
+
 	},
+
+
 
 	Rebounding = {
 
+
+
 		Enabled = true,
+
+
 
 		Type = "Ambush", -- "Blitz"
 
+
+
 		Min = 3,
+
+
 
 		Max = 6,
 
+
+
 		Delay = 0
 
+
+
 	},
+
+
 
 	Damage = {
 
+
+
 		Enabled = true,
+
+
 
 		Range = 100,
 
+
+
 		Amount = 0.01
 
+
+
 	},
+
+
 
 	Crucifixion = {
 
+
+
 		Enabled = true,
+
+
 
 		Range = 40,
 
+
+
 		Resist = false,
+
+
 
 		Break = true
 
+
+
 	},
+
+
 
 	Death = {
 
+
+
 		Type = "Guiding", -- "Curious"
+
+
 
 		Hints = {"Death", "Hints", "Go", "Here"},
 
+
+
 		Cause = ""
+
+
 
 	}
 
+
+
 })
+
+
+
+
 
 
 
@@ -130,49 +261,99 @@ local entity = spawner.Create({
 
 
 
+
+
+
+
 entity:SetCallback("OnSpawned", function()
 
+
+
 game.Workspace.Thunder:Play()
+
+
 
 local TweenService = game:GetService("TweenService")
 
 
 
+
+
+
+
 task.spawn(function()
-
-while flickers == true do wait(2.5)
-
-TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(1),{TintColor = Color3.fromRGB(math.random(100, 255), 0, math.random(100, 255))}):Play()
-
-end
-
-end)
-
-
-
-local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
-
-local camara = game.Workspace.CurrentCamera
-
-local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
-
- camara.CFrame = camara.CFrame * shakeCf
-
-end)
-
-camShake:Start()
-
-camShake:ShakeOnce(50,35,0,2,1,6)
 
 
 
 while flickers == true do wait(3)
 
+
+
+TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(1),{TintColor = Color3.fromRGB(math.random(100, 255), 0, math.random(100, 255))}):Play()
+
+
+
+end
+
+
+
+end)
+
+
+
+
+
+
+
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+
+
+
+local camara = game.Workspace.CurrentCamera
+
+
+
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+
+
+
+ camara.CFrame = camara.CFrame * shakeCf
+
+
+
+end)
+
+
+
+camShake:Start()
+
+
+
+camShake:ShakeOnce(50,35,0,2,1,6)
+
+
+
+
+
+
+
+while flickers == true do wait(5)
+
+
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+
 
 local ModuleEvents = require(ReplicatedStorage.ClientModules.Module_Events)
 
+
+
 local currentrooms = game.Workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]
+
+
+
+
 
 
 
@@ -180,187 +361,395 @@ ModuleEvents.flicker(currentrooms, 5)
 
 
 
+
+
+
+
 end
 
+
+
 end)
+
+
+
+
 
 
 
 entity:SetCallback("OnStartMoving", function()
 
+
+
     print("Entity has started moving")
 
+
+
 end)
+
+
+
+
 
 
 
 entity:SetCallback("OnDespawning", function()
 
+
+
 flickers = false
+
+
 
 game.Workspace.Thunder:Destroy()
 
+
+
 wait(1)
+
+
 
 local TweenService = game:GetService("TweenService")
 
+
+
 local TW2 = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10),{TintColor = Color3.fromRGB(255, 255, 255)})
+
+
 
 TW2:Play()
 
+
+
 end)
+
+
+
+
 
 
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 
+
+
 	if newHealth == 0 then
 
+
+
 		print("Entity has killed the player")
+
+
 
 	else
 
 
+
+
+
+for i,v in pairs(workspace.G95:GetDescendants()) do
+
+	     if v:IsA("Sound") then
+	
+	              v:Stop()
+	
+	end
+	
+end
+
+local TweenService = game:GetService("TweenService")
+		
 local shadow = game:GetObjects("rbxassetid://11503625408")[1]
+
+
 
 local gui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
 
+
+
 shadow.Parent = gui
+
+
 
 shadow.Visible = true
 
 
 
+
+
+
+
 local sound = Instance.new("Sound")
+
+
 
 sound.SoundId = "rbxassetid://18564431123" 
 
+
+
 sound.Parent = gui
 
+
+
 sound.Volume = 0.5
+
+local octave = Instance.new("PitchShiftSoundEffect",sound)
+octave.Octave = 0.5
+local level = Instance.new("DistortionSoundEffect",sound)
+level.Level = 0.97
+
+local a = Instance.new("DistortionSoundEffect",sound)
+a.Level = 0.75
+local b = Instance.new("DistortionSoundEffect",sound)
+b.Level = 0.75
 
 sound:Play()
 
 
 
+
+
+
+
 local l__ImageLabel__1 = shadow.ImageLabel;
+
+
 
 local v2 = Random.new();
 
+
+
 local l__SizeValue__3 = shadow.SizeValue;
+
+
 
 local v4 = math.random(1, 6);
 
+
+
 if v4 == 1 then
+
+
 
 	l__ImageLabel__1.Image = "rbxassetid://106105356667208";
 
+
+
 end;
+
+
 
 if v4 == 2 then
 
+
+
 	l__ImageLabel__1.Image = "rbxassetid://106105356667208";
 
+
+
 end;
+
+
 
 if v4 == 3 then
 
+
+
 	l__ImageLabel__1.Image = "rbxassetid://106105356667208";
 
+
+
 end;
+
+
 
 if v4 == 4 then
 
+
+
 	l__ImageLabel__1.Image = "rbxassetid://106105356667208";
 
+
+
 end;
+
+
 
 if v4 == 5 then
 
+
+
 	l__ImageLabel__1.Image = "rbxassetid://106105356667208";
 
+
+
 end;
+
+
 
 if v4 == 6 then
 
+
+
 	l__ImageLabel__1.Image = "rbxassetid://106105356667208";
 
+
+
 end;
+
+
 
 shadow.Jumpscare:Play();
 
+
+
 for v5 = 1, 25 do
+
+
 
 local v6 = math.random(1, 6);
 
+
+
 	if v6 == 1 then
+
 		TweenService:Create(shadow, TweenInfo.new(1), {BackgroundColor3 = Color3.fromRGB(50, 0, 150)}):Play();
+
 		l__ImageLabel__1.ImageColor3 = Color3.new(0, 0, 0);
 
+
+
 	end;
+
+
 
 	if v6 == 2 then
 
+
+
 		TweenService:Create(shadow, TweenInfo.new(1), {BackgroundColor3 = Color3.fromRGB(0, 0, 0)}):Play();
+
 		l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
 
+
+
 	end;
+
+
 
 	if v6 == 3 then
 
+
+
 		TweenService:Create(shadow, TweenInfo.new(1), {BackgroundColor3 = Color3.fromRGB(150, 0, 0)}):Play();
+
 		l__ImageLabel__1.ImageColor3 = Color3.fromRGB(0, 0, 0);
+
+
 
 	end;
 
+
+
 		l__ImageLabel__1.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.45, 0.55), 0);
+
+
 
 		l__ImageLabel__1.Size = l__ImageLabel__1.Size + UDim2.new(l__SizeValue__3.Value, 0, l__SizeValue__3.Value, 0);
 
+
+
 		l__ImageLabel__1.Rotation = math.random(-180, 180);
+
+
 
 		l__SizeValue__3.Value = l__SizeValue__3.Value - 0.01;
 
+
+
 		wait(0.001);
+
+
 
 end;
 
+
+
 		l__ImageLabel__1.ImageColor3 = Color3.new(0, 0, 0);
 
+
+
 		shadow.BackgroundColor3 = Color3.new(0, 0, 0);
+		
 		TweenService:Create(l__ImageLabel__1, TweenInfo.new(2), {ImageTransparency = 1}):Play();
-		TweenService:Create(shadow, TweenInfo.new(1.5), {BackgroundTransparency = 1}):Play();
+
+		TweenService:Create(shadow, TweenInfo.new(3), {BackgroundTransparency = 1}):Play();
+
 		wait(2);
+
 		gui:destroy()
+
    	game.Players.LocalPlayer.Character.Humanoid:TakeDamage(100)
+
+
 
        game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "G-95"
 
+
+
        firesignal(game:GetService("ReplicatedStorage").RemotesFolder.DeathHint.OnClientEvent, {"You were overwhelmed by G-95...", "Once it arrives, it won’t be satisfied with a single pass.", "Stay hidden. G-95 moves back and forth multiple times before it disappears.", "Don’t leave your hiding spot too soon — impatience is fatal."}, "Blue")
+
+
 
        
 
+
+
 	end
 
+
+
 end)
+
+
+
+
 
 
 
 entity:SetCallback("CrucifixionOverwrite", function()
 
+
+
 local TweenService = game:GetService("TweenService")
+
+
 
 local TW2 = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10),{TintColor = Color3.fromRGB(255, 255, 255)})
 
+
+
 TW2:Play()
 
+
+
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("...",true)
+
+
 
 end)
 
 
 
+
+
+
+
 ---====== Run entity ======---
+
+
+
+
 
 
 
