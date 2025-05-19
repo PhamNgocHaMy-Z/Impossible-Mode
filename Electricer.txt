@@ -11,11 +11,12 @@ Electricer.PrimaryPart = primary_part
 Electricer:SetPrimaryPartCFrame(chr.HumanoidRootPart.CFrame * CFrame.new(0, 0, -offsetgyat))
 Electricer.PrimaryPart.CanCollide = false
 
-TweenService:Create(Electricer.PrimaryPart.Desp,TweenInfo.new(2,Enum.EasingStyle.Linear),{PlaybackSpeed = 1.1}):Play()
-TweenService:Create(Electricer.PrimaryPart.PlaySound,TweenInfo.new(2,Enum.EasingStyle.Linear),{PlaybackSpeed = 2}):Play()
+Electricer.PrimaryPart.Desp.PlaybackSpeed = 1.1
+Electricer.PrimaryPart.PlaySound.PlaybackSpeed = 2
+
 local function Dmg()
     local hum = chr:FindFirstChild("Humanoid")
-    local dmg = math.random(5, 25)
+    local dmg = 1.5
         hum:TakeDamage(dmg)
            local ReSt = game:GetService("ReplicatedStorage") 
            ReSt.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Electricer"
@@ -27,21 +28,14 @@ local function LookAt()
     return dot_product > 0.95
 end
 
-local function Moving(target, dur)
-    local tween_info = TweenInfo.new(dur, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-    local tween = TweenService:Create(Electricer.PrimaryPart, tween_info, {CFrame = target})
-    tween:Play()
-    tween.Completed:Wait()
-end
-
-wait(3)
-
+wait(0.5)
+task.spawn(function()
+while true do wait(0.1)
 if LookAt() then
 Dmg()
-Moving(chr.HumanoidRootPart.CFrame, 0.3)
 end
+end
+end)
 
-TweenService:Create(Electricer.PrimaryPart.Desp,TweenInfo.new(2,Enum.EasingStyle.Linear),{PlaybackSpeed = 0.1}):Play()
-TweenService:Create(Electricer.PrimaryPart.Desp,TweenInfo.new(2,Enum.EasingStyle.Linear),{Volume = 0}):Play()
-TweenService:Create(Electricer.PrimaryPart.PlaySound,TweenInfo.new(2,Enum.EasingStyle.Linear),{Volume = 0}):Play()
+wait(3)
 Electricer:Destroy()
