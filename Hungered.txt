@@ -168,11 +168,10 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 	else
         game.Workspace.Hungered:Destroy()
 game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
-			firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to Hunger or who call Hungered", "It's appear when room doing red, spawn doing asset earthquake and runs doing blood room", "He can do come back few times, so hide until not safe.."}, "Blue") -- "Blue" or "Yellow"
-      game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Hungered"
+game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Hungered"
 
         local shadow = game:GetObjects("rbxassetid://11503625408")[1]
-		local gui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
+	local gui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
         local cue = Instance.new("Sound")
     	cue.Parent = gui
     	cue.Name = "Spawn"
