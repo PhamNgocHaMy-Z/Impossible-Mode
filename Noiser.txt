@@ -73,6 +73,7 @@ local sound = entity.Sound
 face.Speed = NumberRange.new(5, 5)
 face.Rate = 9999
 face.RotSpeed = NumberRange.new(-25, 25)
+face.Texture = "rbxassetid://107304851801619"
 
 sound.PlaybackSpeed = 20
 sound.Volume = 3
