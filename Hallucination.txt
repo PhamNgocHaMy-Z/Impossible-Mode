@@ -1,0 +1,31 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "Gui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+local imageLabel = Instance.new("ImageLabel")
+imageLabel.Size = UDim2.new(0.5, 0, 0.5, 0)
+imageLabel.Position = UDim2.new(0.25, 0, 0.25, 0)
+imageLabel.BackgroundTransparency = 1
+imageLabel.Image = "rbxassetid://83898633712489"
+imageLabel.Parent = screenGui
+imageLabel.ImageTransparency = 1
+TweenService:Create(imageLabel, TweenInfo.new(30), {ImageTransparency = 0.5}):Play();
+wait(25)
+
+if not game.Players.LocalPlayer.Character:GetAttribute("Hiding") and game.Players.LocalPlayer.Character.Humanoid.Health >= 0 then
+game.Players.LocalPlayer.Character.Humanoid.Health -= math.random(40, 70)
+game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Hallucination"
+TweenService:Create(imageLabel, TweenInfo.new(3), {ImageTransparency = 1}):Play();
+wait(3)
+screenGui:Destroy()
+elseif game.Players.LocalPlayer.Character:GetAttribute("Hiding") then
+
+TweenService:Create(imageLabel, TweenInfo.new(4), {ImageTransparency = 1}):Play();
+wait(4)
+screenGui:Destroy()
+end
