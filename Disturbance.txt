@@ -202,7 +202,7 @@ for v5 = 1, 35 do
 local v6 = math.random(1, 10);
 	if v6 == 1 then
 		shadow.BackgroundColor3 = Color3.new(0, 0, 0);
-		l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
+		l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0);
 	end;
 	if v6 == 2 then
 		shadow.BackgroundColor3 = Color3.new(0, 0, 0);
