@@ -99,12 +99,11 @@ local part = entity:FindFirstChildWhichIsA("BasePart")
 local face = part.Attachment.ParticleEmitter
 local smoke = part.Attachment.Smoke
 
-face.Texture = "rbxassetid://77083634265387"
-face.Speed = NumberRange.new(5, 5)
+face.Texture = "rbxassetid://137315872634522"
+face.Speed = NumberRange.new(0.1, 1)
 face.Rate = 50
 face.RotSpeed = NumberRange.new(-5, 5)
-face.Color = ColorSequence.new(Color3.fromRGB(255, 0, 0))
-smoke.Color = ColorSequence.new(Color3.fromRGB(255, 0, 0))
+smoke.Color = ColorSequence.new(Color3.fromRGB(150, 0, 255))
 smoke.Speed = NumberRange.new(-100, 100)
 smoke.Rate = 9999
 smoke.Brightness = 9999
@@ -120,9 +119,9 @@ part.PlaySound.PlaybackSpeed = 5
 
 for i, child in pairs(part.Attachment:GetChildren()) do
     if child.Name == "PointLight" then
-        child.Brightness = 1
+        child.Brightness = 5
         child.Range = 40
-        child.Color = Color3.new(1,0,0)
+        child.Color = Color3.fromRGB(150,0,255)
     end
 end
 
@@ -155,7 +154,7 @@ task.spawn(function()
 			local hrp = char and char:FindFirstChild("HumanoidRootPart")
 			local entity = game.Workspace.Disturbance:FindFirstChildWhichIsA("BasePart")
 
-			if hum and hrp and (hrp.Position - entity.Position).Magnitude <= 50 then
+			if hum and hrp and (hrp.Position - entity.Position).Magnitude <= 60 then
 	    		if not char:GetAttribute("Hiding") and game.Players.LocalPlayer.Character.Humanoid.Health >= 0 then
 	
 game.Players.LocalPlayer.Character.Humanoid.Health -= 1000
@@ -180,41 +179,41 @@ local v2 = Random.new();
 local l__SizeValue__3 = shadow.SizeValue;
 local v4 = math.random(1, 6);
 if v4 == 1 then
-	l__ImageLabel__1.Image = "rbxassetid://77083634265387";
+	l__ImageLabel__1.Image = "rbxassetid://137315872634522";
 end;
 if v4 == 2 then
-	l__ImageLabel__1.Image = "rbxassetid://77083634265387";
+	l__ImageLabel__1.Image = "rbxassetid://137315872634522";
 end;
 if v4 == 3 then
-	l__ImageLabel__1.Image = "rbxassetid://77083634265387";
+	l__ImageLabel__1.Image = "rbxassetid://137315872634522";
 end;
 if v4 == 4 then
-	l__ImageLabel__1.Image = "rbxassetid://77083634265387";
+	l__ImageLabel__1.Image = "rbxassetid://137315872634522";
 end;
 if v4 == 5 then
-	l__ImageLabel__1.Image = "rbxassetid://77083634265387";
+	l__ImageLabel__1.Image = "rbxassetid://137315872634522";
 end;
 if v4 == 6 then
-	l__ImageLabel__1.Image = "rbxassetid://77083634265387";
+	l__ImageLabel__1.Image = "rbxassetid://137315872634522";
 end;
 shadow.Jumpscare:Play();
 for v5 = 1, 35 do
 local v6 = math.random(1, 10);
 	if v6 == 1 then
 		shadow.BackgroundColor3 = Color3.new(0, 0, 0);
-		l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0);
+		l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
 	end;
 	if v6 == 2 then
 		shadow.BackgroundColor3 = Color3.new(0, 0, 0);
-		l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0);
+		l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
 	end;
 	if v6 == 3 then
-		shadow.BackgroundColor3 = Color3.new(1, 1, 1);
-		l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0);
+		shadow.BackgroundColor3 = Color3.new(1, 0, 0);
+		l__ImageLabel__1.ImageColor3 = Color3.new(0, 0, 0);
 	end;
 	if v6 == 4 then
-		shadow.BackgroundColor3 = Color3.new(0, 0, 0);
-		l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0);
+		shadow.BackgroundColor3 = Color3.new(1, 0, 0);
+		l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1);
 	end;
 	if v6 == 5 then
 		shadow.BackgroundColor3 = Color3.new(1, 0, 0);
